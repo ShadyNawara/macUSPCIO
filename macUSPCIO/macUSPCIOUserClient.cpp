@@ -18,23 +18,28 @@ bool macUSPCIOUserClient::initWithTask( task_t owningTask, void * securityID, UI
     IOLog("macUSPCIOUserClient::initWithTask(type %u)\n", type);
     
     fTask = owningTask;
+    driver = NULL;
 
     return( super::initWithTask( owningTask, securityID, type, properties ));
 }
 
 bool macUSPCIOUserClient::start( IOService * provider )
 {
+    bool success;
     IOLog("macUSPCIOUserClient::start\n");
 
-    if( !super::start( provider ))
-        return( false );
 
-    assert( OSDynamicCast( macUSPCIO, provider ));
-    driver = (macUSPCIO *) provider;
+    driver = OSDynamicCast(macUSPCIO, provider);
+    success = (driver != NULL);
 
-    openClientsCount = 1;
+    if (success) {
+        // It's important not to call super::start if some previous condition
+        // (like an invalid provider) would cause this function to return false.
+        // I/O Kit won't call stop on an object if its start function returned false.
+        success = super::start(provider);
+    }
 
-    return( true );
+    return success;
 }
 
 IOReturn macUSPCIOUserClient::clientClose( void )

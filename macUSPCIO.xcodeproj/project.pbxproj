@@ -12,7 +12,21 @@
 		F244F7C927E19E2600810A7B /* macUSPCIOUserClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F244F7C827E19E2600810A7B /* macUSPCIOUserClient.h */; };
 		F27E94A927E1841C00150FB2 /* macUSPCIO.h in Headers */ = {isa = PBXBuildFile; fileRef = F27E94A827E1841C00150FB2 /* macUSPCIO.h */; };
 		F27E94AB27E1841C00150FB2 /* macUSPCIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F27E94AA27E1841C00150FB2 /* macUSPCIO.cpp */; };
+		F28D5F9227E1B5E800A33EE6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F28D5F9127E1B5E800A33EE6 /* main.cpp */; };
+		F28D5F9827E1B65600A33EE6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28D5F9727E1B65600A33EE6 /* IOKit.framework */; platformFilters = (maccatalyst, macos, ); };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F28D5F8D27E1B5E800A33EE6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F244F7C427E19B4100810A7B /* macUSPCIOShared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macUSPCIOShared.h; sourceTree = "<group>"; };
@@ -22,6 +36,9 @@
 		F27E94A827E1841C00150FB2 /* macUSPCIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macUSPCIO.h; sourceTree = "<group>"; };
 		F27E94AA27E1841C00150FB2 /* macUSPCIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = macUSPCIO.cpp; sourceTree = "<group>"; };
 		F27E94AC27E1841C00150FB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F28D5F8F27E1B5E800A33EE6 /* macUSPCIOTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = macUSPCIOTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F28D5F9127E1B5E800A33EE6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F28D5F9727E1B65600A33EE6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +49,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F28D5F8C27E1B5E800A33EE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28D5F9827E1B65600A33EE6 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -39,7 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				F27E94A727E1841C00150FB2 /* macUSPCIO */,
+				F28D5F9027E1B5E800A33EE6 /* macUSPCIOTest */,
 				F27E94A627E1841C00150FB2 /* Products */,
+				F28D5F9627E1B65600A33EE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				F27E94A527E1841C00150FB2 /* macUSPCIO.kext */,
+				F28D5F8F27E1B5E800A33EE6 /* macUSPCIOTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,6 +90,22 @@
 				F27E94AC27E1841C00150FB2 /* Info.plist */,
 			);
 			path = macUSPCIO;
+			sourceTree = "<group>";
+		};
+		F28D5F9027E1B5E800A33EE6 /* macUSPCIOTest */ = {
+			isa = PBXGroup;
+			children = (
+				F28D5F9127E1B5E800A33EE6 /* main.cpp */,
+			);
+			path = macUSPCIOTest;
+			sourceTree = "<group>";
+		};
+		F28D5F9627E1B65600A33EE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F28D5F9727E1B65600A33EE6 /* IOKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +142,23 @@
 			productReference = F27E94A527E1841C00150FB2 /* macUSPCIO.kext */;
 			productType = "com.apple.product-type.kernel-extension";
 		};
+		F28D5F8E27E1B5E800A33EE6 /* macUSPCIOTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F28D5F9527E1B5E800A33EE6 /* Build configuration list for PBXNativeTarget "macUSPCIOTest" */;
+			buildPhases = (
+				F28D5F8B27E1B5E800A33EE6 /* Sources */,
+				F28D5F8C27E1B5E800A33EE6 /* Frameworks */,
+				F28D5F8D27E1B5E800A33EE6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = macUSPCIOTest;
+			productName = macUSPCIOTest;
+			productReference = F28D5F8F27E1B5E800A33EE6 /* macUSPCIOTest */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -108,6 +169,9 @@
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					F27E94A427E1841C00150FB2 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					F28D5F8E27E1B5E800A33EE6 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -126,6 +190,7 @@
 			projectRoot = "";
 			targets = (
 				F27E94A427E1841C00150FB2 /* macUSPCIO */,
+				F28D5F8E27E1B5E800A33EE6 /* macUSPCIOTest */,
 			);
 		};
 /* End PBXProject section */
@@ -147,6 +212,14 @@
 			files = (
 				F244F7C727E19B9100810A7B /* macUSPCIOUserClient.cpp in Sources */,
 				F27E94AB27E1841C00150FB2 /* macUSPCIO.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F28D5F8B27E1B5E800A33EE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28D5F9227E1B5E800A33EE6 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +381,22 @@
 			};
 			name = Release;
 		};
+		F28D5F9327E1B5E800A33EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F28D5F9427E1B5E800A33EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -325,6 +414,15 @@
 			buildConfigurations = (
 				F27E94B027E1841C00150FB2 /* Debug */,
 				F27E94B127E1841C00150FB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F28D5F9527E1B5E800A33EE6 /* Build configuration list for PBXNativeTarget "macUSPCIOTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F28D5F9327E1B5E800A33EE6 /* Debug */,
+				F28D5F9427E1B5E800A33EE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
