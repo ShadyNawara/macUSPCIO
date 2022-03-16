@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F27E94A927E1841C00150FB2 /* macUSPCIO.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F27E94A827E1841C00150FB2 /* macUSPCIO.hpp */; };
+		F244F7C527E19B4100810A7B /* macUSPCIOShared.h in Headers */ = {isa = PBXBuildFile; fileRef = F244F7C427E19B4100810A7B /* macUSPCIOShared.h */; };
+		F244F7C727E19B9100810A7B /* macUSPCIOUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F244F7C627E19B9100810A7B /* macUSPCIOUserClient.cpp */; };
+		F244F7C927E19E2600810A7B /* macUSPCIOUserClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F244F7C827E19E2600810A7B /* macUSPCIOUserClient.h */; };
+		F27E94A927E1841C00150FB2 /* macUSPCIO.h in Headers */ = {isa = PBXBuildFile; fileRef = F27E94A827E1841C00150FB2 /* macUSPCIO.h */; };
 		F27E94AB27E1841C00150FB2 /* macUSPCIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F27E94AA27E1841C00150FB2 /* macUSPCIO.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F244F7C427E19B4100810A7B /* macUSPCIOShared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macUSPCIOShared.h; sourceTree = "<group>"; };
+		F244F7C627E19B9100810A7B /* macUSPCIOUserClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = macUSPCIOUserClient.cpp; sourceTree = "<group>"; };
+		F244F7C827E19E2600810A7B /* macUSPCIOUserClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macUSPCIOUserClient.h; sourceTree = "<group>"; };
 		F27E94A527E1841C00150FB2 /* macUSPCIO.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macUSPCIO.kext; sourceTree = BUILT_PRODUCTS_DIR; };
-		F27E94A827E1841C00150FB2 /* macUSPCIO.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = macUSPCIO.hpp; sourceTree = "<group>"; };
+		F27E94A827E1841C00150FB2 /* macUSPCIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macUSPCIO.h; sourceTree = "<group>"; };
 		F27E94AA27E1841C00150FB2 /* macUSPCIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = macUSPCIO.cpp; sourceTree = "<group>"; };
 		F27E94AC27E1841C00150FB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,8 +54,11 @@
 		F27E94A727E1841C00150FB2 /* macUSPCIO */ = {
 			isa = PBXGroup;
 			children = (
-				F27E94A827E1841C00150FB2 /* macUSPCIO.hpp */,
+				F27E94A827E1841C00150FB2 /* macUSPCIO.h */,
 				F27E94AA27E1841C00150FB2 /* macUSPCIO.cpp */,
+				F244F7C427E19B4100810A7B /* macUSPCIOShared.h */,
+				F244F7C827E19E2600810A7B /* macUSPCIOUserClient.h */,
+				F244F7C627E19B9100810A7B /* macUSPCIOUserClient.cpp */,
 				F27E94AC27E1841C00150FB2 /* Info.plist */,
 			);
 			path = macUSPCIO;
@@ -62,7 +71,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F27E94A927E1841C00150FB2 /* macUSPCIO.hpp in Headers */,
+				F244F7C527E19B4100810A7B /* macUSPCIOShared.h in Headers */,
+				F27E94A927E1841C00150FB2 /* macUSPCIO.h in Headers */,
+				F244F7C927E19E2600810A7B /* macUSPCIOUserClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F244F7C727E19B9100810A7B /* macUSPCIOUserClient.cpp in Sources */,
 				F27E94AB27E1841C00150FB2 /* macUSPCIO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
