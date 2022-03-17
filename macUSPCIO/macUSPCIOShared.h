@@ -11,6 +11,8 @@
 enum {
     kpciReadIOByte = 0,
     kpciWriteIOByte = 1,
+    kpciReadConfigByte = 2,
+    kpciReadConfigWord = 3,
     kNumberOfMethods
 };
 

@@ -13,45 +13,23 @@ inline void PrintErrorDetails(kern_return_t ret)
 
 int main(void)
 {
-    static const char* dextIdentifier = "macUSPCIO";
-    
-    kern_return_t ret = kIOReturnSuccess;
-    io_iterator_t iterator = IO_OBJECT_NULL;
-    io_service_t service = IO_OBJECT_NULL;
-    io_connect_t connection = IO_OBJECT_NULL;
-    /// - Tag: ClientApp_Connect
-    ret = IOServiceGetMatchingServices(NULL, IOServiceNameMatching(dextIdentifier), &iterator);
-    if (ret != kIOReturnSuccess)
-    {
-        printf("Unable to find service for identifier with error: 0x%08x.\n", ret);
-        PrintErrorDetails(ret);
-    }
-
-    printf("Searching for dext service...\n");
-    while ((service = IOIteratorNext(iterator)) != IO_OBJECT_NULL)
-    {
-        // Open a connection to this user client as a server to that client, and store the instance in "service"
-        ret = IOServiceOpen(service, mach_task_self_, 0, &connection);
-
-        if (ret == kIOReturnSuccess)
-        {
-            printf("\tOpened service.\n");
-            break;
+    kern_return_t ret;
+    io_connect_t conn = 0;
+    io_service_t dev = IOServiceGetMatchingService(NULL, IOServiceMatching("macUSPCIO"));
+    if (dev) {
+        ret = IOServiceOpen(dev, mach_task_self(), 0, &conn);
+        if (ret == kIOReturnSuccess) {
+            printf("opened service\n");
+            uint32_t outputCount = 1;
+            uint64_t scalarO_64 = 0;
+            uint64_t scalarinput_64[1] = {0x040};
+            ret = IOConnectCallScalarMethod(conn, 0, scalarinput_64, 1, &scalarO_64, &outputCount);
+            if (ret == 0) {
+                printf("result = %x\n", (uint8_t)scalarO_64);
+            }
+            IOServiceClose(conn);
         }
-        else
-        {
-            printf("\tFailed opening service with error: 0x%08x.\n", ret);
-        }
-
-        IOObjectRelease(service);
+        IOObjectRelease(dev);
     }
-    IOObjectRelease(iterator);
-
-    if (service == IO_OBJECT_NULL)
-    {
-        printf("Failed to match to device.\n");
-        return EXIT_FAILURE;
-    }
-    
     return 0;
 }

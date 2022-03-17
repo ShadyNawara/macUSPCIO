@@ -45,6 +45,18 @@ public:
      * and value
      */
     void pciWriteIOByte(UInt16 address, UInt8 value);
+    
+    /*
+     * Reads a byte from the pci device config space at a given address
+     * and returns the value
+     */
+    UInt8 pciReadConfigByte(UInt16 address);
+    
+    /*
+     * Reads a byte from the pci device config space at a given address
+     * and returns the value
+     */
+    UInt16 pciReadConfigWord(UInt16 address);
 };
 
 

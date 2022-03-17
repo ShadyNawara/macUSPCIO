@@ -13,14 +13,26 @@
 #define super IOUserClient
 OSDefineMetaClassAndStructors( macUSPCIOUserClient, IOUserClient );
 
-bool macUSPCIOUserClient::initWithTask( task_t owningTask, void * securityID, UInt32 type,  OSDictionary * properties )
+bool macUSPCIOUserClient::init(void)
 {
-    IOLog("macUSPCIOUserClient::initWithTask(type %u)\n", type);
-    
-    fTask = owningTask;
+    bool result = false;
+
+    IOLog("macUSPCIOUserClient::init()");
+
+    result = super::init();
+    if (result != true)
+    {
+        IOLog("macUSPCIOUserClient::init() - super::init failed.");
+        goto Exit;
+    }
+
     driver = NULL;
 
-    return( super::initWithTask( owningTask, securityID, type, properties ));
+    IOLog("macUSPCIOUserClient::init() - Finished.");
+    return true;
+
+Exit:
+    return false;
 }
 
 bool macUSPCIOUserClient::start( IOService * provider )
@@ -42,12 +54,34 @@ bool macUSPCIOUserClient::start( IOService * provider )
     return success;
 }
 
-IOReturn macUSPCIOUserClient::clientClose( void )
+void macUSPCIOUserClient::stop( IOService * provider )
 {
-    if( !isInactive())
-        terminate();
+    super::stop(provider);
+}
 
-    return( kIOReturnSuccess );
+void macUSPCIOUserClient::free(void)
+{
+    IOLog("macUSPCIOUserClient::free()");
+
+    super::free();
+}
+
+bool macUSPCIOUserClient::initWithTask(task_t owningTask, void *securityToken, UInt32 type, OSDictionary *properties)
+{
+    bool success;
+
+    success = super::initWithTask(owningTask, securityToken, type, properties);
+
+    // This IOLog must follow super::initWithTask because getName relies on the superclass initialization.
+    IOLog("macUSPCIOUserClient::%s[%p]::%s(%p, %p, %u, %p)\n", getName(), this, __FUNCTION__, owningTask, securityToken, (unsigned)type, properties);
+
+    if (success) {
+    }
+
+    fTask = owningTask;
+    driver = NULL;
+
+    return success;
 }
 
 const IOExternalMethodDispatch macUSPCIOUserClient::sMethods[kNumberOfMethods] = {
@@ -61,6 +95,20 @@ const IOExternalMethodDispatch macUSPCIOUserClient::sMethods[kNumberOfMethods] =
     {
         (IOExternalMethodAction) &macUSPCIOUserClient::externalPciWriteIOByte,    // Method pointer.
         2,                                                // One scalar input values.
+        0,                                                // No struct input value.
+        1,                                                // One scalar output value.
+        0                                                // No struct output value.
+    },
+    {
+        (IOExternalMethodAction) &macUSPCIOUserClient::externalPciReadConfigByte,    // Method pointer.
+        1,                                                // One scalar input values.
+        0,                                                // No struct input value.
+        1,                                                // One scalar output value.
+        0                                                // No struct output value.
+    },
+    {
+        (IOExternalMethodAction) &macUSPCIOUserClient::externalPciReadConfigWord,    // Method pointer.
+        1,                                                // One scalar input values.
         0,                                                // No struct input value.
         1,                                                // One scalar output value.
         0                                                // No struct output value.
@@ -89,5 +137,17 @@ IOReturn macUSPCIOUserClient::externalPciReadIOByte(macUSPCIO *target, void *ref
 IOReturn macUSPCIOUserClient::externalPciWriteIOByte(macUSPCIO *target, void *reference, IOExternalMethodArguments *arguments)
 {
     target->pciWriteIOByte((UInt16)arguments->scalarInput[0], (UInt8)arguments->scalarInput[1]);
+    return kIOReturnSuccess;
+}
+
+IOReturn macUSPCIOUserClient::externalPciReadConfigByte(macUSPCIO *target, void *reference, IOExternalMethodArguments *arguments)
+{
+    arguments->scalarOutput[0] = target->pciReadConfigByte((UInt16)arguments->scalarInput[0]);
+    return kIOReturnSuccess;
+}
+
+IOReturn macUSPCIOUserClient::externalPciReadConfigWord(macUSPCIO *target, void *reference, IOExternalMethodArguments *arguments)
+{
+    arguments->scalarOutput[0] = target->pciReadConfigWord((UInt16)arguments->scalarInput[0]);
     return kIOReturnSuccess;
 }

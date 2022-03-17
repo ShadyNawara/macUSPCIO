@@ -62,18 +62,29 @@ void macUSPCIO::stop(IOService * provider)
 {
     IOLog("%s::stop\n", getName());
     
+    pci_device->close(this);
     super::stop(provider);
 }
 
-
 UInt8 macUSPCIO::pciReadIOByte(UInt16 address)
 {
-    UInt8 res = 0xff;
-    res = pci_device->ioRead8(address);
+    UInt8 res = pci_device->ioRead8(address);
     return res;
 }
 
 void macUSPCIO::pciWriteIOByte(UInt16 address, UInt8 value)
 {
     pci_device->ioWrite8(address, value);
+}
+
+UInt8 macUSPCIO::pciReadConfigByte(UInt16 address)
+{
+    UInt8 res = pci_device->configRead8(address);
+    return res;
+}
+
+UInt16 macUSPCIO::pciReadConfigWord(UInt16 address)
+{
+    UInt16 res = pci_device->configRead16(address);
+    return res;
 }

@@ -27,13 +27,11 @@
 			<key>IOProviderClass</key>
 			<string>IOPCIDevice</string>
 			<key>IOUserClientClass</key>
-			<string>macUSPCIOPCIUserClient</string>
+			<string>macUSPCIOUserClient</string>
 		</dict>
 	</dict>
 	<key>OSBundleLibraries</key>
 	<dict>
-		<key>com.apple.iokit.IOHIDFamily</key>
-		<string>2.0</string>
 		<key>com.apple.iokit.IOPCIFamily</key>
 		<string>2.9</string>
 		<key>com.apple.kpi.iokit</key>
