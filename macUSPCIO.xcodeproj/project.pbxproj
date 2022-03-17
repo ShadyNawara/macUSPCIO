@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,7 @@
 		F27E94A927E1841C00150FB2 /* macUSPCIO.h in Headers */ = {isa = PBXBuildFile; fileRef = F27E94A827E1841C00150FB2 /* macUSPCIO.h */; };
 		F27E94AB27E1841C00150FB2 /* macUSPCIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F27E94AA27E1841C00150FB2 /* macUSPCIO.cpp */; };
 		F28D5F9227E1B5E800A33EE6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F28D5F9127E1B5E800A33EE6 /* main.cpp */; };
-		F28D5F9827E1B65600A33EE6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28D5F9727E1B65600A33EE6 /* IOKit.framework */; platformFilters = (maccatalyst, macos, ); };
+		F28D5F9827E1B65600A33EE6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28D5F9727E1B65600A33EE6 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,7 +167,6 @@
 		F27E949C27E1841C00150FB2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					F27E94A427E1841C00150FB2 = {
@@ -179,7 +178,7 @@
 				};
 			};
 			buildConfigurationList = F27E949F27E1841C00150FB2 /* Build configuration list for PBXProject "macUSPCIO" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -349,7 +348,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macUSPCIO/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				MODULE_NAME = "com.sn-labs.macUSPCIO";
 				MODULE_VERSION = 1.0.0d1;
@@ -371,7 +370,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macUSPCIO/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				MODULE_NAME = "com.sn-labs.macUSPCIO";
 				MODULE_VERSION = 1.0.0d1;
@@ -387,6 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -395,6 +395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
