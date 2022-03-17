@@ -3,13 +3,10 @@
 #include <sys/ioctl.h>
 #include <IOKit/IOKitLib.h>
 
-inline void PrintErrorDetails(kern_return_t ret)
-{
-    printf("\tSystem: 0x%02x\n", err_get_system(ret));
-    printf("\tSubsystem: 0x%03x\n", err_get_sub(ret));
-    printf("\tCode: 0x%04x\n", err_get_code(ret));
-}
+#include "macUSPCIOAccess.h"
 
+
+io_connect_t macUSPCIODriverConnection;
 
 int main(void)
 {

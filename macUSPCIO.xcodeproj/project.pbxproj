@@ -29,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F20156C027E2F58A000C50EE /* macUSPCIOAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macUSPCIOAccess.h; sourceTree = "<group>"; };
 		F244F7C427E19B4100810A7B /* macUSPCIOShared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macUSPCIOShared.h; sourceTree = "<group>"; };
 		F244F7C627E19B9100810A7B /* macUSPCIOUserClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = macUSPCIOUserClient.cpp; sourceTree = "<group>"; };
 		F244F7C827E19E2600810A7B /* macUSPCIOUserClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macUSPCIOUserClient.h; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				F28D5F9127E1B5E800A33EE6 /* main.cpp */,
+				F20156C027E2F58A000C50EE /* macUSPCIOAccess.h */,
 			);
 			path = macUSPCIOTest;
 			sourceTree = "<group>";
