@@ -45,12 +45,6 @@ bool macUSPCIO::start( IOService * provider )
         IOLog("%s::%s Could not open provider", getName(), pci_device->getName());
         return false;
     }
-    
-    uint32_t host_config = pci_device->configRead8(SMBHSTCFG);
-    if ((host_config & SMBHSTCFG_HST_EN) == 0) {
-        IOLog("SMBus disabled");
-        return false;
-    }
 
     /* publish ourselves so clients can find us */
     registerService();

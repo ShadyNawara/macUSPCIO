@@ -38,7 +38,7 @@ Exit:
 bool macUSPCIOUserClient::start( IOService * provider )
 {
     bool success;
-    IOLog("macUSPCIOUserClient::start\n");
+    IOLog("macUSPCIOUserClient::start");
 
 
     driver = OSDynamicCast(macUSPCIO, provider);
@@ -117,8 +117,6 @@ const IOExternalMethodDispatch macUSPCIOUserClient::sMethods[kNumberOfMethods] =
 
 IOReturn macUSPCIOUserClient::externalMethod(uint32_t selector, IOExternalMethodArguments * arguments, IOExternalMethodDispatch * dispatch, OSObject * target, void * reference )
 {
-    IOLog("%s[%p]::%s(%d, %p, %p, %p, %p)\n", getName(), this, __FUNCTION__, selector, arguments, dispatch, target, reference);
-
     if (selector < (uint32_t) kNumberOfMethods) {
         dispatch = (IOExternalMethodDispatch *) &sMethods[selector];
         if (!target) {

@@ -11,10 +11,6 @@
 #include <IOKit/pci/IOPCIDevice.h>
 #include "macUSPCIOShared.h"
 
-#define BIT(nr) (1UL << (nr))
-#define SMBHSTCFG               0x040
-#define SMBHSTCFG_HST_EN        BIT(0)
-
 class macUSPCIO : public IOService
 {
     OSDeclareDefaultStructors( macUSPCIO );
