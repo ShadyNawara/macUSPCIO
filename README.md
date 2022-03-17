@@ -12,11 +12,10 @@ see: [https://developer.apple.com/library/archive/documentation/DeviceDrivers/Co
 ## Installation
 - SIP must be disabled (or at least the driver signing feature)
 - set .kext ownership to 0:0
-- run `sudo kextload ./macUSPCIO.kext` (Driver will unload on each reboot)
-- alternatively install using OpenCore or other kext installation method
+- run `sudo kextload ./macUSPCIO.kext` (Driver will unload on reboot)
+- alternatively install using OpenCore (persistent) or other kext installation method
 
-### Currently only built and tested on macOS 12.1 (Monterey)
-*WIP: to build for older versions of macOS*
+### Supports macOS 10.15+
 
 ## Security Concern
 This driver exposes internal pci devices to free user space access. This may pose a security risk so use with caution. 
