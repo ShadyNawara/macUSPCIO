@@ -13,13 +13,16 @@
 
 extern io_connect_t macUSPCIO_driver_connection;
 
-inline bool InitMacUSPCIODriver() {
-    if(macUSPCIO_driver_connection) {
+inline bool InitMacUSPCIODriver()
+{
+    if(macUSPCIO_driver_connection)
+    {
         return true;
     }
     
-    io_service_t dev = IOServiceGetMatchingService(NULL, IOServiceMatching("macUSPCIO"));
-    if (dev) {
+    io_service_t dev = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("macUSPCIO"));
+    if (dev)
+    {
         kern_return_t ret = IOServiceOpen(dev, mach_task_self(), 0, &macUSPCIO_driver_connection);
         IOObjectRelease(dev);
         return ret == kIOReturnSuccess;
@@ -28,7 +31,8 @@ inline bool InitMacUSPCIODriver() {
 }
 
 inline bool GetMacUSPCIODriverStatus() {
-    if(macUSPCIO_driver_connection) {
+    if(macUSPCIO_driver_connection)
+    {
         return true;
     }
     return false;
@@ -37,10 +41,17 @@ inline bool GetMacUSPCIODriverStatus() {
 inline void CloseMacUSPCIODriver() {
     if(macUSPCIO_driver_connection) {
         IOServiceClose(macUSPCIO_driver_connection);
+        macUSPCIO_driver_connection = 0;
     }
 }
 
-inline uint8_t ReadIoPortByte(uint16_t address) {
+inline uint8_t ReadIoPortByte(uint16_t address)
+{
+    if(!macUSPCIO_driver_connection)
+    {
+        return 0;
+    }
+    
     uint32_t outputCount = 1;
     uint64_t output = 0;
     uint64_t input[1] = {address};
@@ -50,7 +61,13 @@ inline uint8_t ReadIoPortByte(uint16_t address) {
     return (uint8_t)output;
 }
 
-inline void WriteIoPortByte(uint16_t address, uint8_t value) {
+inline void WriteIoPortByte(uint16_t address, uint8_t value)
+{
+    if(!macUSPCIO_driver_connection)
+    {
+        return;
+    }
+    
     uint32_t outputCount = 1;
     uint64_t output = 0;
     uint64_t input[2] = {address, value};
@@ -59,6 +76,11 @@ inline void WriteIoPortByte(uint16_t address, uint8_t value) {
 }
 
 inline uint8_t ReadConfigPortByte(uint16_t address) {
+    if(!macUSPCIO_driver_connection)
+    {
+        return 0;
+    }
+    
     uint32_t outputCount = 1;
     uint64_t output = 0;
     uint64_t input[1] = {address};
@@ -68,7 +90,13 @@ inline uint8_t ReadConfigPortByte(uint16_t address) {
     return (uint8_t)output;
 }
 
-inline uint16_t ReadConfigPortWord(uint16_t address) {
+inline uint16_t ReadConfigPortWord(uint16_t address)
+{
+    if(!macUSPCIO_driver_connection)
+    {
+        return 0;
+    }
+    
     uint32_t outputCount = 1;
     uint64_t output = 0;
     uint64_t input[1] = {address};
