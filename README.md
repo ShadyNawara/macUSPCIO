@@ -10,10 +10,34 @@ see: [https://developer.apple.com/library/archive/documentation/DeviceDrivers/Co
 ### Current code and release build are set to match with IOPCIClass = 0c050000&0xffffff00 for matching with the Intel I801 controller
 
 ## Installation
+### Method 1 - OpenCore
+- Add driver to OC/Kexts
+- Add the following driver entry to your config.plist under Kernal->Add or use the snapshot function (Cmd+R) in [ProperTree](https://github.com/corpnewt/ProperTree)
+
+```
+	<dict>
+		<key>BundlePath</key>
+		<string>macUSPCIO.kext</string>
+		<key>Comment</key>
+		<string>macUSPCIO.kext</string>
+		<key>Enabled</key>
+		<true/>
+		<key>ExecutablePath</key>
+		<string>Contents/MacOS/macUSPCIO</string>
+		<key>Arch</key>
+		<string>Any</string>
+		<key>MaxKernel</key>
+		<string></string>
+		<key>MinKernel</key>
+		<string></string>
+		<key>PlistPath</key>
+		<string>Contents/Info.plist</string>
+	</dict>
+```
+### Method 2 - Manual (not Recommended)
 - SIP must be disabled (or at least the driver signing feature)
-- set .kext ownership to 0:0
-- run `sudo kextload ./macUSPCIO.kext` (Driver will unload on reboot)
-- alternatively install using OpenCore (persistent) or other kext installation method
+- set .kext ownership to 0:0 (`sudo chown -R 0:0 ./macUSPCIO.kext`)
+- run `sudo kextload ./macUSPCIO.kext`
 
 ### Supports macOS 10.15+
 
