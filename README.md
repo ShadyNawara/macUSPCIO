@@ -7,7 +7,7 @@ The driver can be configured to match with any pci device specified in the info.
 
 see: [https://developer.apple.com/library/archive/documentation/DeviceDrivers/Conceptual/IOKitFundamentals/Matching/Matching.html](https://developer.apple.com/library/archive/documentation/DeviceDrivers/Conceptual/IOKitFundamentals/Matching/Matching.html) for more info on driver matching.
 
-### Current code and release build are set to match with IOPCIClass = 0c050000&0xffffff00 for matching with the Intel I801 controller
+### Current code and release build are set to match with IOPCIClass = 0c050000&0xffffff00 for matching with smbus class controllers
 
 ## Installation
 ### Method 1 - OpenCore
